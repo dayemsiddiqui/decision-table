@@ -14,7 +14,8 @@
     "preversion": "npm run lint",
     "version": "npm run format && git add -A src",
     "postversion": "git push && git push --tags",
-    "start": "npx ts-node src/main.ts"
+    "start": "npx ts-node src/main.ts",
+    "cli": "npx ts-node src/cli.ts"
   },
   "repository": {
     "type": "git",
@@ -43,5 +44,12 @@
   },
   "files": [
     "lib/**/*"
-  ]
+  ],
+  "bin": {
+    "jest-decision-table": "lib/cli.js"
+  },
+  "dependencies": {
+    "@types/inquirer": "^7.3.1",
+    "inquirer": "^7.3.3"
+  }
 }

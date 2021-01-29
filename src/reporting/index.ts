@@ -1,1 +1,1 @@
-export { printDecisionTable } from './print';
+export { Reporting } from './Reporting';
