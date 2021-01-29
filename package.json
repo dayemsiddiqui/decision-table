@@ -43,5 +43,8 @@
   },
   "files": [
     "lib/**/*"
-  ]
+  ],
+  "dependencies": {
+    "js-combinatorics": "^1.4.5"
+  }
 }

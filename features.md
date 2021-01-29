@@ -1,8 +1,8 @@
 ### Features
 
 - ~~**Write and publish a super simply node package on npm**~~
-- Take an array of json objects and print a decision table
-- Save an array of json objects
+- **~~Take an array of json objects and print a decision table~~**
+- **~~Save an array of json objects~~**
 - Add the feature to take possible values for input variables and generate decision tree
 - Add a feature to add outcome variables
 - Add a command-line feature to fill those outcome variables
