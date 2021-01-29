@@ -108,3 +108,7 @@ dist
 
 #IDE
 .idea
+.idea/workspace.xml
+/.idea
+/.idea/**
+

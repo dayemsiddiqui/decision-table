@@ -1,6 +1,6 @@
 ### Features
 
-- Write and publish a super simply node package on npm
+- ~~**Write and publish a super simply node package on npm**~~
 - Take an array of json objects and print a decision table
 - Save an array of json objects
 - Add the feature to take possible values for input variables and generate decision tree

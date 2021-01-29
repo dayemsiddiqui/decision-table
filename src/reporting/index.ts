@@ -1,0 +1,1 @@
+export { printDecisionTable } from './print'
