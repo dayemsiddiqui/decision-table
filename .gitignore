@@ -105,3 +105,6 @@ dist
 
 #lib
 /lib
+
+#IDE
+.idea
