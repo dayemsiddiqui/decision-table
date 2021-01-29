@@ -1,6 +1,6 @@
 {
   "name": "jest-decision-table",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A library to generate and test decision tables",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -9,17 +9,22 @@
     "build": "tsc",
     "format": "prettier --write src/**/*.ts",
     "lint": "tslint -p tsconfig.json",
-    "prepare" : "npm run build",
-    "prepublishOnly" : "npm test && npm run lint",
-    "preversion" : "npm run lint",
-    "version" : "npm run format && git add -A src",
-    "postversion" : "git push && git push --tags"
+    "prepare": "npm run build",
+    "prepublishOnly": "npm test && npm run lint",
+    "preversion": "npm run lint",
+    "version": "npm run format && git add -A src",
+    "postversion": "git push && git push --tags"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/dayemsiddiqui/decision-table.git"
   },
-  "keywords": ["decision-tables", "jest", "testing", "truth table"],
+  "keywords": [
+    "decision-tables",
+    "jest",
+    "testing",
+    "truth table"
+  ],
   "author": "Dayem Siddiqui",
   "license": "ISC",
   "bugs": {
