@@ -29,8 +29,8 @@ export class Repository {
   }
 
   async rehydrate(): Promise<void> {
-    console.log('Reading File... Please Wait...')
-    await this.readLockFile()
+    console.log('Reading File... Please Wait...');
+    await this.readLockFile();
   }
 
   getTable(): DecisionTable {
@@ -56,11 +56,11 @@ export class Repository {
         encoding: 'utf-8',
       });
       if (!data) {
-        reject()
+        reject();
       }
       const file: LockFile = JSON.parse(data);
       this.addTable(file.contents.table);
-      resolve()
+      resolve();
     });
   }
 }
