@@ -1,1 +1,1 @@
-export { DecisionTable } from './DecisionTable'
+export { DecisionTable } from './DecisionTable';

@@ -1,5 +1,5 @@
 export interface DecisionRecord {
-    [key: string]: any
+  [key: string]: any;
 }
 
-export type DecisionTable = DecisionRecord[]
+export type DecisionTable = DecisionRecord[];

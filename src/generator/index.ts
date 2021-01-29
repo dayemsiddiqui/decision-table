@@ -1,1 +1,1 @@
-export { TableGenerator } from './TableGenerator'
+export { TableGenerator } from './TableGenerator';
