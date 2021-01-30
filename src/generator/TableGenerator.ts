@@ -1,7 +1,7 @@
-import { DecisionRecord, DecisionTable } from '../models/DecisionTable';
+import {DecisionRecord, DecisionRecordValue, DecisionTable} from '../models';
 
 interface ObjectDefinition {
-  [key: string]: Array<string | null | undefined | boolean | number>;
+  [key: string]: Array<DecisionRecordValue>;
 }
 
 export class TableGenerator {

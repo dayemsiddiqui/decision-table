@@ -13,7 +13,7 @@ export class Repository {
   private filepath = path.join(__dirname, this.filename);
   private table: DecisionTable = [];
 
-  persist(table: DecisionTable): void {
+  override(table: DecisionTable): void {
     const file = this.addTable(table).buildFile();
     const json = JSON.stringify(file);
     fs.writeFile(
@@ -28,9 +28,9 @@ export class Repository {
     );
   }
 
-  async rehydrate(): Promise<void> {
+  async rehydrate(): Promise<DecisionTable> {
     console.log('Reading File... Please Wait...');
-    await this.readLockFile();
+    return await this.readLockFile();
   }
 
   getTable(): DecisionTable {
@@ -50,8 +50,8 @@ export class Repository {
     };
   }
 
-  private readLockFile(): Promise<void> {
-    return new Promise((resolve, reject) => {
+  private readLockFile(): Promise<DecisionTable> {
+    return new Promise<DecisionTable>((resolve, reject) => {
       const data = fs.readFileSync(this.filename, {
         encoding: 'utf-8',
       });
@@ -60,7 +60,7 @@ export class Repository {
       }
       const file: LockFile = JSON.parse(data);
       this.addTable(file.contents.table);
-      resolve();
+      resolve(this.table);
     });
   }
 }

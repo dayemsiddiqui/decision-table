@@ -1,12 +1,15 @@
 import * as inquirer from 'inquirer';
 import { Repository } from './repository';
 import { Reporting } from './reporting';
+import { AutoComplete } from './generator';
 
 const main = () => {
   console.log('Jest Decision Record');
   console.log('====================');
   start();
 };
+
+const reporting = new Reporting();
 
 const start = () => {
   const question = {
@@ -24,7 +27,7 @@ const start = () => {
           .rehydrate()
           .then(() => {
             const table = repo.getTable();
-            new Reporting().print(table);
+            reporting.print(table);
           })
           .finally(() => main());
       }
@@ -44,24 +47,58 @@ const start = () => {
 
 const fillTable = () => {
   const question = {
-    type: 'list',
-    name: 'fill',
-    message: 'Do you want to update the decision table?',
-    choices: ['y', 'n'],
+    type: 'input',
+    name: 'fieldName',
+    message: 'Type the field name you want to add or update',
   };
   inquirer
     .prompt([question])
     .then((answer) => {
-      if (answer.fill === 'y') {
-        console.log('Decision Table Updated');
+      if (answer.fieldName) {
+        new Repository().rehydrate().then((table) => {
+          const autoComplete = new AutoComplete(table);
+          if (autoComplete.hasNext()) {
+              const record = autoComplete.currentRecord();
+              reporting.print([record]);
+              const progress = autoComplete.progress();
+              console.log(`Progress: ${progress.current}/${progress.total} Done`)
+            updateRecord(answer.fieldName, autoComplete);
+          }
+        });
       }
     })
     .catch((err) => {
       console.warn('Oops something went wrong!');
-    })
-    .finally(() => {
-      console.log('Exiting! Goodbye!');
     });
 };
+
+function updateRecord(fieldName: string, autoComplete: AutoComplete) {
+  const question = {
+    type: 'input',
+    name: 'value',
+    message: 'Type value of the field for following row: \n',
+  };
+  inquirer
+    .prompt([question])
+    .then((answer) => {
+      if (answer.value) {
+        autoComplete.update(fieldName, answer.value);
+      }
+      if (autoComplete.hasNext()) {
+          const record = autoComplete.currentRecord();
+          reporting.print([record]);
+          const progress = autoComplete.progress();
+          console.log(`Progress: ${progress.current}/${progress.total} Done`)
+          updateRecord(fieldName, autoComplete)
+      } else {
+          autoComplete.persist()
+          console.log('Persisted')
+          main()
+      }
+    })
+    .catch((err) => {
+      console.warn('Oops something went wrong!');
+    });
+}
 
 main();
