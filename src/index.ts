@@ -3,5 +3,6 @@ export * from './reporting';
 export * from './models';
 export * from './generator';
 export * from './models';
-export * from './mappers'
-export * from './actions'
+export * from './mappers';
+export * from './actions';
+export * from './testrunner';
