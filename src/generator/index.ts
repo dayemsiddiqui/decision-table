@@ -1,2 +1,2 @@
 export { TableGenerator } from './TableGenerator';
-export { AutoComplete } from  './AutoComplete'
+export { AutoComplete } from './AutoComplete';

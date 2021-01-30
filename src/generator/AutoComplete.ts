@@ -37,8 +37,8 @@ export class AutoComplete {
   progress() {
     return {
       total: this.table.length,
-      current: this.index
-    }
+      current: this.index,
+    };
   }
 
   persist(): void {
