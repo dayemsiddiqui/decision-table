@@ -1,4 +1,4 @@
-import { DecisionRecord } from '../models';
+import { DecisionRecord } from '../tables';
 
 export class Mapper<T> {
   constructor(

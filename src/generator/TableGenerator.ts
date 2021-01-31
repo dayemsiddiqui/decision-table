@@ -1,4 +1,5 @@
-import { DecisionRecord, DecisionRecordValue, DecisionTable } from '../models';
+import {DecisionRecord, DecisionRecordValue, DecisionTable} from "../tables";
+
 
 interface ObjectDefinition {
   [key: string]: Array<DecisionRecordValue>;

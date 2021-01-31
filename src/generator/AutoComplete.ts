@@ -1,4 +1,4 @@
-import { DecisionRecord, DecisionRecordValue, DecisionTable } from '../models';
+import { DecisionRecord, DecisionRecordValue, DecisionTable } from './../tables';
 import { Repository } from '../repository';
 
 export class AutoComplete {

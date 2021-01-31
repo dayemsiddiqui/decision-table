@@ -1,4 +1,4 @@
-import { DecisionTable } from '../models/DecisionTable';
+import { DecisionTable } from '../tables/DecisionTable';
 import * as fs from 'fs';
 import * as path from 'path';
 
@@ -33,6 +33,10 @@ export class Repository {
     return await this.readLockFile();
   }
 
+  rehydrateSync(): void {
+    this.readFileSync()
+  }
+
   getTable(): DecisionTable {
     return this.table;
   }
@@ -62,5 +66,16 @@ export class Repository {
       this.addTable(file.contents.table);
       resolve(this.table);
     });
+  }
+
+  readFileSync(): void {
+    const data = fs.readFileSync(this.filename, {
+      encoding: 'utf-8',
+    });
+    if (!data) {
+      return
+    }
+    const file: LockFile = JSON.parse(data);
+    this.addTable(file.contents.table);
   }
 }

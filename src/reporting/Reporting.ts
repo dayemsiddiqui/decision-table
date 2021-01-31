@@ -1,4 +1,4 @@
-import { DecisionTable } from '../models/DecisionTable';
+import { DecisionTable } from '../tables/DecisionTable';
 
 export class Reporting {
   print(table: DecisionTable): void {
