@@ -81,14 +81,14 @@ export class TestRunner<T> {
   }
 
   private getDescription(record: DecisionRecord): string {
-      let desc = `${this.outcomeKey} should be ${record[this.outcomeKey]}`
-      this.descriptionGenerators.forEach((generator) => {
-          const conditionDescription = generator(record);
-          if(conditionDescription) {
-              desc =  desc + ' when:  \n'  + conditionDescription
-          }
-      });
-      return desc
+    let desc = `${this.outcomeKey} should be ${record[this.outcomeKey]}`;
+    this.descriptionGenerators.forEach((generator) => {
+      const conditionDescription = generator(record);
+      if (conditionDescription) {
+        desc = desc + ' when:  \n' + conditionDescription;
+      }
+    });
+    return desc;
   }
 
   summary() {

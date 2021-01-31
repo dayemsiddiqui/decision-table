@@ -34,7 +34,7 @@ export class Repository {
   }
 
   rehydrateSync(): void {
-    this.readFileSync()
+    this.readFileSync();
   }
 
   getTable(): DecisionTable {
@@ -73,7 +73,7 @@ export class Repository {
       encoding: 'utf-8',
     });
     if (!data) {
-      return
+      return;
     }
     const file: LockFile = JSON.parse(data);
     this.addTable(file.contents.table);
